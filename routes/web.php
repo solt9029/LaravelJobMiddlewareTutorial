@@ -1,5 +1,7 @@
 <?php
 
+use App\Jobs\DelayLogJob;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +15,10 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/delay-log-job', function() {
+    $log = (new DelayLogJob)->delay(10);
+    dispatch($log);
+    return 'DelayLogJob dispatched';
 });
