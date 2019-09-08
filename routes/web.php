@@ -18,7 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('/delay-log-job', function() {
-    $log = (new DelayLogJob)->delay(10);
-    dispatch($log);
+    dispatch(new DelayLogJob);
     return 'DelayLogJob dispatched';
 });

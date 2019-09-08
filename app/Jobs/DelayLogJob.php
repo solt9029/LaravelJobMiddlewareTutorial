@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Http\Middleware\DelayLogJobMiddleware;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -31,5 +32,12 @@ class DelayLogJob implements ShouldQueue
     public function handle()
     {
         Log::info('DelayLogJob handled');
+    }
+
+    /**
+     * @return array|object
+     */
+    public function middleware() {
+        return [new DelayLogJobMiddleware];
     }
 }
