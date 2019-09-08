@@ -1,6 +1,6 @@
 <?php
 
-use App\Jobs\DelayLogJob;
+use App\Jobs\LogJob;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/delay-log-job', function() {
-    dispatch(new DelayLogJob);
-    return 'DelayLogJob dispatched';
+Route::get('/log', function() {
+    dispatch(new LogJob);
+    return 'LogJob dispatched';
 });

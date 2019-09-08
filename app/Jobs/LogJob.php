@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Http\Middleware\DelayLogJobMiddleware;
+use App\Http\Middleware\LogJobMiddleware;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -10,7 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\Log;
 
-class DelayLogJob implements ShouldQueue
+class LogJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -31,13 +31,13 @@ class DelayLogJob implements ShouldQueue
      */
     public function handle()
     {
-        Log::info('DelayLogJob handled');
+        Log::info('LogJob handled');
     }
 
     /**
      * @return array|object
      */
     public function middleware() {
-        return [new DelayLogJobMiddleware];
+        return [new LogJobMiddleware];
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Log;
 
-class DelayLogJobMiddleware
+class LogJobMiddleware
 {
     /**
      * Process the queued job.
@@ -16,7 +16,7 @@ class DelayLogJobMiddleware
      */
     public function handle($job, Closure $next)
     {
-        Log::info('DelayLogJobMiddleware handled');
+        Log::info('LogJobMiddleware handled');
         return $next($job);
     }
 }
